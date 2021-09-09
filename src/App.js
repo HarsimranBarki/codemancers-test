@@ -7,16 +7,17 @@ import theme from "@chakra-ui/theme";
 import Navbar from "./components/Navbar";
 import Create from "./components/Create";
 import { useState } from "react";
+import Timeline from "./components/Timeline";
 
 function App() {
   const [collection, setCollection] = useState([]);
 
-  const updateTimeline = (userMessage, GIF, dataOfMessage) => {
+  const updateTimeline = (userMessage, GIF, dateOfMessage) => {
     setCollection([
       {
         userMessage,
         GIF,
-        dataOfMessage,
+        dateOfMessage,
       },
       ...collection,
     ]);
@@ -27,6 +28,7 @@ function App() {
       <Navbar />
       <Container my="10">
         <Create updateTimeline={updateTimeline} />
+        <Timeline collection={collection} />
       </Container>
     </ChakraProvider>
   );

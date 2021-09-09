@@ -3,6 +3,7 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Box, Flex } from "@chakra-ui/layout";
 import { Button, CloseButton, Image, Spinner, Text } from "@chakra-ui/react";
 import { FaArrowCircleRight } from "react-icons/fa";
+import GIFModal from "./GIFModal";
 
 const Create = ({ updateTimeline }) => {
   const [GIF, setGIF] = useState(null); // Handle GIF Loaded In TextBox
@@ -87,6 +88,7 @@ const Create = ({ updateTimeline }) => {
       )}
 
       <Flex mt={5} justifyContent="space-between">
+        <GIFModal setGIF={setGIF} />
         <Button
           rightIcon={<FaArrowCircleRight />}
           variant="solid"

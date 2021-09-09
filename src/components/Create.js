@@ -4,15 +4,15 @@ import { Box, Flex } from "@chakra-ui/layout";
 import { Button, CloseButton, Image, Spinner, Text } from "@chakra-ui/react";
 import { FaArrowCircleRight } from "react-icons/fa";
 
-const Create = () => {
+const Create = ({ updateTimeline }) => {
   const [GIF, setGIF] = useState(null);
   const [userMessage, setUserMessage] = useState("");
   const [isGIFLoaded, setIsGIFLoaded] = useState(false);
   const [postButtonDisable, setPostButtonDisable] = useState(false);
 
-  const postEle = useRef(null);
+  const userMessageElement = useRef(null);
 
-  const backgroundColor = useColorModeValue("white", "gray.800");
+  const backgroundColor = useColorModeValue("white", "gray.900");
   const textAreaBackgroundColor = useColorModeValue("gray.100", "gray.700");
 
   const handleUserMessage = (e) => {
@@ -21,6 +21,16 @@ const Create = () => {
 
     setPostButtonDisable(false);
     setUserMessage(targetHTML);
+  };
+
+  const handleCreatePost = () => {
+    const todayDate = new Date().toLocaleString([], { hour12: true });
+    if (userMessage.length === 0 && GIF === null) return;
+    updateTimeline(userMessage, GIF, todayDate);
+    userMessageElement.current.innerHTML = "";
+
+    setGIF(null);
+    setUserMessage("");
   };
 
   return (
@@ -37,7 +47,7 @@ const Create = () => {
           contentEditable="true"
           onInput={(e) => handleUserMessage(e)}
           suppressContentEditableWarning={true}
-          ref={postEle}
+          ref={userMessageElement}
           mb={3}
           py={2}
           px={2}
@@ -83,7 +93,7 @@ const Create = () => {
           colorScheme="facebook"
           fontWeight="normal"
           isDisabled={postButtonDisable}
-          onClick={() => setPostButtonDisable()}
+          onClick={() => handleCreatePost()}
         >
           Post
         </Button>

@@ -1,4 +1,4 @@
-const apiKey = "aG44aTz7PuarA2HdGKsJeItC6URmyHgN";
+const apiKey = process.env.REACT_APP_GIPHY_API;
 
 export const getTrendingGIFs = () => {
   return fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}`).then(

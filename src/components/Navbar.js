@@ -5,15 +5,15 @@ import React from "react";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const bg = useColorModeValue("white", "gray.700");
-  const font = useColorModeValue("black", "white");
+  const backgoundColor = useColorModeValue("white", "gray.700");
+  const textColor = useColorModeValue("black", "white");
   return (
-    <Box padding="4" bg={bg} shadow="base" color={font}>
+    <Box padding="4" bg={backgoundColor} shadow="base" color={textColor}>
       <Container maxW="container.xl">
         <Flex justifyContent="space-between" alignItems="center">
           <Link href="/">Social Connect</Link>
 
-          <Button onClick={toggleColorMode} size="sm">
+          <Button onClick={toggleColorMode} fontWeight="normal" size="sm">
             Toggle {colorMode === "light" ? "Dark" : "Light"}
           </Button>
         </Flex>

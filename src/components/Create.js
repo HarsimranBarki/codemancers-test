@@ -39,7 +39,7 @@ const Create = ({ updateTimeline }) => {
       <Text fontSize="lg" fontWeight="semibold">
         Create A Post
       </Text>
-      <Box rounded="lg" my={3} bg={textAreaBackgroundColor} minHeight="100px">
+      <Box rounded="lg" my={3} bg={textAreaBackgroundColor}>
         <Box
           width="100%"
           border="none"

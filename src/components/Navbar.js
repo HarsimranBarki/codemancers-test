@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const backgoundColor = useColorModeValue("white", "gray.700");
+  const backgoundColor = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("black", "white");
   return (
     <Box padding="4" bg={backgoundColor} shadow="base" color={textColor}>

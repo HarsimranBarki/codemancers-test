@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import React from "react";
 
 const Timeline = ({ collection }) => {
-  const backgroundColor = useColorModeValue("white", "gray.700");
+  const backgroundColor = useColorModeValue("white", "gray.800");
   if (!collection) return;
   return (
     <Box my={5}>

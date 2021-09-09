@@ -13,7 +13,7 @@ const Create = ({ updateTimeline }) => {
 
   const userMessageElement = useRef(null);
 
-  const backgroundColor = useColorModeValue("white", "gray.900");
+  const backgroundColor = useColorModeValue("white", "gray.800");
   const textAreaBackgroundColor = useColorModeValue("gray.100", "gray.700");
 
   const handleUserMessage = (e) => {

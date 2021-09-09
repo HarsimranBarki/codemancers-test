@@ -5,7 +5,7 @@ import { Button, CloseButton, Image, Spinner, Text } from "@chakra-ui/react";
 import { FaArrowCircleRight } from "react-icons/fa";
 
 const Create = ({ updateTimeline }) => {
-  const [GIF, setGIF] = useState(null);
+  const [GIF, setGIF] = useState(null); // Handle GIF Loaded In TextBox
   const [userMessage, setUserMessage] = useState("");
   const [isGIFLoaded, setIsGIFLoaded] = useState(false);
   const [postButtonDisable, setPostButtonDisable] = useState(false);

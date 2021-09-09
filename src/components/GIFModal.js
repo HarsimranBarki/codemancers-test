@@ -13,17 +13,27 @@ import {
   ModalHeader,
   ModalOverlay,
   Spinner,
+  Text,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BsFileEarmarkArrowUp } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { getTrendingGIFs, searchGIFs } from "../lib/giphy";
 
+const tagLines = [
+  "🚴‍♂️ Finding your gifs",
+  "🧑‍⚕️ Please be paitient",
+  "🏃‍♂️ We will make it quicker",
+  "😔 Sorry to keep you waiting",
+  "🧗 On top of the mountain Searching",
+];
+
 const GIFModal = ({ setGIF }) => {
   const [loading, setLoading] = useState();
   const [GIFCollection, setGIFCollection] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searched, setSearched] = useState("");
+  const [offset, setOffset] = useState(0);
 
   const backgoundColor = useColorModeValue("white", "gray.800");
 
@@ -41,7 +51,8 @@ const GIFModal = ({ setGIF }) => {
   const handleGIFSearch = () => {
     if (searched.length === 0) return;
     setLoading(true);
-    searchGIFs(searched)
+    setOffset(offset + 25);
+    searchGIFs(searched, 25, offset)
       .then((json) => {
         setGIFCollection(json.data);
         setLoading(false);
@@ -98,7 +109,16 @@ const GIFModal = ({ setGIF }) => {
               justifyContent="center"
             >
               {loading ? (
-                <Spinner />
+                <Flex
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Spinner />
+                  <Text mt={2}>
+                    {tagLines[Math.floor(Math.random() * tagLines.length)]}
+                  </Text>
+                </Flex>
               ) : (
                 GIFCollection?.map((g) => {
                   return (
@@ -117,6 +137,9 @@ const GIFModal = ({ setGIF }) => {
                 })
               )}
             </Flex>
+            <Button my={3} size="sm" onClick={() => handleGIFSearch()}>
+              Try Different?
+            </Button>
           </ModalBody>
         </ModalContent>
       </Modal>

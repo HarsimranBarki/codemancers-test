@@ -6,8 +6,8 @@ export const getTrendingGIFs = () => {
   ).then((response) => response.json());
 };
 
-export const searchGIFs = (value) => {
+export const searchGIFs = (value, limit, offset) => {
   return fetch(
-    `https://api.giphy.com/v1/gifs/search?q=${value}&api_key=${apiKey}&limit=20`
+    `https://api.giphy.com/v1/gifs/search?q=${value}&api_key=${apiKey}&limit=${limit}&offset=${offset}`
   ).then((response) => response.json());
 };

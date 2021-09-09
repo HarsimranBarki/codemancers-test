@@ -7,12 +7,6 @@ import React from "react";
 const Timeline = ({ collection }) => {
   const backgroundColor = useColorModeValue("white", "gray.700");
   if (!collection) return;
-
-  /**
-   *   userMessage,
-        GIF,
-        dataOfMessage,
-   */
   return (
     <Box my={5}>
       {collection?.map(({ userMessage, GIF, dateOfMessage }) => {

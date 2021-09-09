@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Create from "./components/Create";
 import { useState } from "react";
 import Timeline from "./components/Timeline";
+import "./App.css";
 
 function App() {
   const [collection, setCollection] = useState([]);

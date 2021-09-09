@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useDisclosure } from "@chakra-ui/hooks";
 import {
   Button,
   Flex,
+  IconButton,
   Image,
   Input,
   Modal,
@@ -14,14 +14,16 @@ import {
   ModalOverlay,
   Spinner,
 } from "@chakra-ui/react";
-import { v4 as uuidv4 } from "uuid";
+import React, { useEffect, useState } from "react";
 import { BsFileEarmarkArrowUp } from "react-icons/bs";
+import { FiSearch } from "react-icons/fi";
 import { getTrendingGIFs, searchGIFs } from "../lib/giphy";
 
 const GIFModal = ({ setGIF }) => {
   const [loading, setLoading] = useState();
   const [GIFCollection, setGIFCollection] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [searched, setSearched] = useState("");
 
   const backgoundColor = useColorModeValue("white", "gray.800");
 
@@ -30,29 +32,22 @@ const GIFModal = ({ setGIF }) => {
     onClose(); // Close Modal
   };
 
-  const debounce = (fn, time) => {
-    let timeoutId;
-    return wrapper;
-    function wrapper(...args) {
-      setLoading(true);
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      timeoutId = setTimeout(() => {
-        timeoutId = null;
-        fn(...args);
-      }, time);
-    }
+  const handleSearchInput = (e) => {
+    let value = e.target.value;
+    if (value.length === 0) return;
+    setSearched(e.target.value);
   };
 
-  const handleGIFSearch = debounce((value) => {
-    searchGIFs(value)
+  const handleGIFSearch = () => {
+    if (searched.length === 0) return;
+    setLoading(true);
+    searchGIFs(searched)
       .then((json) => {
         setGIFCollection(json.data);
         setLoading(false);
       })
       .catch((error) => console.log(error));
-  }, 1000);
+  };
 
   useEffect(() => {
     getTrendingGIFs()
@@ -77,11 +72,22 @@ const GIFModal = ({ setGIF }) => {
           <ModalHeader fontWeight="normal">Choose A Gif</ModalHeader>
           <ModalCloseButton />
           <ModalBody mb={5}>
-            <Input
-              type="text"
-              placeholder="Search gif"
-              onChange={(e) => handleGIFSearch(e.target.value)}
-            />
+            <Flex>
+              <Input
+                type="text"
+                variant="filled"
+                placeholder="Search gif"
+                name="searchField"
+                onChange={(e) => handleSearchInput(e)}
+              />
+              <IconButton
+                icon={<FiSearch />}
+                ml={2}
+                onClick={() => handleGIFSearch()}
+              >
+                Search
+              </IconButton>
+            </Flex>
 
             <Flex
               flexWrap="wrap"
@@ -98,15 +104,14 @@ const GIFModal = ({ setGIF }) => {
                   return (
                     <Image
                       type="gif"
-                      src={g.images.fixed_width.url}
-                      key={uuidv4()}
+                      src={g.images.downsized.url}
+                      key={g.id}
                       data-id={g.id}
+                      alt={g.title}
                       boxSize="150px"
                       cursor="pointer"
                       bg={backgoundColor}
-                      onClick={() =>
-                        handleSelectedGIF(g.images.fixed_width.url)
-                      }
+                      onClick={() => handleSelectedGIF(g.images.downsized.url)}
                     />
                   );
                 })

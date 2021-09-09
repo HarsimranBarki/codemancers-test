@@ -1,8 +1,8 @@
-# [Codemancers Assignment](https://codemancers-assignment-taupe.vercel.app/)
+# [Codemancers Assignment](https://codemancers-test.vercel.app/)
 
 This is a submission for codemancers front-end task for Front-End position
 
-- [Demo on Vercel ↗](https://codemancers-assignment-taupe.vercel.app/)
+- [Demo on Vercel ↗](https://codemancers-test.vercel.app/)
 
 ## Tech Stack
 
@@ -14,8 +14,8 @@ This is a submission for codemancers front-end task for Front-End position
 ## Instruction
 
 ```bash
-git clone https://github.com/HarsimranBarki/trinkerr-assignment
-cd codemancers-assignment
+git clone https://github.com/HarsimranBarki/codemancers-test
+cd codemancers-test
 npm install
 npm run start
 ```

@@ -1,4 +1,12 @@
-(https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2Fcode-mancers&psig=AOvVaw2W1V04Xv2aEjFx_N9GP_7r&ust=1632064605271000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPipsMroiPMCFQAAAAAdAAAAABAD)
+<p align="center">
+  <a href="https://reacttraining.com/react-router/">
+    <img alt="react-router" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2Fcode-mancers&psig=AOvVaw2W1V04Xv2aEjFx_N9GP_7r&ust=1632064605271000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPipsMroiPMCFQAAAAAdAAAAABAD" width="144">
+  </a>
+</p>
+
+<h3 align="center">
+  Codemancers
+</h3>
 
 # [Codemancers Assignment](https://codemancers-test.vercel.app/)
 

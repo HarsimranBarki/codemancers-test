@@ -12,7 +12,7 @@
 
 This is a submission for codemancers front-end task for Front-End position
 
-- [Demo on Vercel ↗](https://codemancers-test.vercel.app/)
+- [Demo on Vercel ↗](Demo Is Offline)
 
 ## Tech Stack
 
